@@ -18,9 +18,22 @@
 #
 
 include_recipe "libvirt"
+include_recipe "kernel"
 
 node["kvm"]["host"]["packages"].each do |name|
   package name do
     action :install
   end
+end
+
+kernel_modules "kvm" do
+  if node["cpu"][0]["flags"].include? "vmx"
+    modules %w(kvm kvm-intel)
+  end
+
+  if node["cpu"][0]["flags"].include? "svm"
+    modules %w(kvm kvm-amd)
+  end
+
+  action :load
 end
