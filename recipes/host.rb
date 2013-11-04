@@ -27,13 +27,6 @@ node["kvm"]["host"]["packages"].each do |name|
 end
 
 kernel_modules "kvm" do
-  if node["cpu"][0]["flags"].include? "vmx"
-    modules %w(kvm kvm-intel)
-  end
-
-  if node["cpu"][0]["flags"].include? "svm"
-    modules %w(kvm kvm-amd)
-  end
-
-  action :load
+  modules node["kvm"]["host"]["kernel_modules"]
+  action :create
 end
