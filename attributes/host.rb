@@ -23,9 +23,9 @@ default["kvm"]["host"]["packages"] = %w(
 )
 
 default["kvm"]["host"]["kernel_modules"] = case
-when node["cpu"]["0"]["flags"].include? "vmx"
+when node["cpu"]["0"]["flags"].include?("vmx")
   %w(kvm kvm-intel)
-when node["cpu"]["0"]["flags"].include? "svm"
+when node["cpu"]["0"]["flags"].include?("svm")
   %w(kvm kvm-amd)
 else
   %w(kvm)
