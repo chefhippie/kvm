@@ -22,11 +22,14 @@ default["kvm"]["host"]["packages"] = %w(
   virt-manager
 )
 
-default["kvm"]["host"]["kernel_modules"] = case
+case
 when node["cpu"]["0"]["flags"].include?("vmx")
-  %w(kvm kvm-intel)
+  default["kvm"]["host"]["kernel_modules"] = %w(kvm kvm-intel)
+  default["kvm"]["host"]["kernel_options"] = ["options kvm-intel nested=1"]
 when node["cpu"]["0"]["flags"].include?("svm")
-  %w(kvm kvm-amd)
+  default["kvm"]["host"]["kernel_modules"] = %w(kvm kvm-amd)
+  default["kvm"]["host"]["kernel_options"] = ["options kvm-amd nested=1"]
 else
-  %w(kvm)
+  default["kvm"]["host"]["kernel_modules"] = %w(kvm)
+  default["kvm"]["host"]["kernel_options"] = %w()
 end

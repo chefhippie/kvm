@@ -28,5 +28,6 @@ end
 
 kernel_modules "kvm" do
   modules node["kvm"]["host"]["kernel_modules"]
+  options node["kvm"]["host"]["kernel_options"]
   action :create
 end
