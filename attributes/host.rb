@@ -20,6 +20,7 @@
 default["kvm"]["host"]["packages"] = %w(
   kvm
   virt-manager
+  virt-viewer
 )
 
 case
