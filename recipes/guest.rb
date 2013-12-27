@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe "libvirt"
-
 node["kvm"]["guest"]["packages"].each do |name|
   package name do
     action :install

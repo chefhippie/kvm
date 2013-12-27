@@ -9,4 +9,6 @@ depends "libvirt"
 depends "kernel"
 recipe "kvm", "Installs/Configures kvm"
 
-supports "suse"
+supports "suse", ">= 12.3"
+supports "debian", ">= 7.0"
+supports "ubuntu", ">= 12.04"
