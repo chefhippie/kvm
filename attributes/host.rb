@@ -17,8 +17,10 @@
 # limitations under the License.
 #
 
-default["kvm"]["host"]["packages"] = %w(
-  kvm
+default["kvm"]["host"]["packages"] = value_for_platform_family(
+  "debian" => "kvm",
+  "ubuntu" => "kvm",
+  "suse" => "patterns-openSUSE-kvm_server"
 )
 
 case
