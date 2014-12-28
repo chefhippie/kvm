@@ -26,7 +26,6 @@ default["kvm"]["host"]["packages"] = value_for_platform_family(
   ),
   "suse" => %w(
     patterns-openSUSE-kvm_server
-    kvm_server
     qemu
     qemu-kvm
   )
