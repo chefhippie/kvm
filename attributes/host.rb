@@ -30,11 +30,11 @@ default["kvm"]["host"]["packages"] = value_for_platform_family(
 
 case
 when node["cpu"]["0"]["flags"].include?("vmx")
-  default["kvm"]["host"]["kernel_modules"] = %w(kvm kvm-intel)
-  default["kvm"]["host"]["kernel_options"] = ["options kvm-intel nested=1"]
+  default["kvm"]["host"]["kernel_modules"] = %w(kvm kvm_intel)
+  default["kvm"]["host"]["kernel_options"] = ["options kvm_intel nested=1"]
 when node["cpu"]["0"]["flags"].include?("svm")
-  default["kvm"]["host"]["kernel_modules"] = %w(kvm kvm-amd)
-  default["kvm"]["host"]["kernel_options"] = ["options kvm-amd nested=1"]
+  default["kvm"]["host"]["kernel_modules"] = %w(kvm kvm_amd)
+  default["kvm"]["host"]["kernel_options"] = ["options kvm_amd nested=1"]
 else
   default["kvm"]["host"]["kernel_modules"] = %w(kvm)
   default["kvm"]["host"]["kernel_options"] = %w()
